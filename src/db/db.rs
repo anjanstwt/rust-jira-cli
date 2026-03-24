@@ -1,17 +1,16 @@
-use std::{collections::HashMap, fs};
+use std::fs;
 
 use anyhow::Result;
-use serde_json::Value;
 
 use crate::db::DBState;
 
-trait Database {
+pub trait Database {
     fn read_file(&self) -> Result<DBState>;
     fn write_file(&self, db_state: &DBState) -> Result<()>;
 }
 
 #[derive(Clone)]
-struct JSONFileDatabase {
+pub struct JSONFileDatabase {
     pub file_path: String,
 }
 
@@ -25,6 +24,9 @@ impl Database for JSONFileDatabase {
     }
 
     fn write_file(&self, db_state: &DBState) -> Result<()> {
+        let json = serde_json::to_vec(db_state)?;
+        fs::write(self.file_path.clone(), json)?;
+
         Ok(())
     }
 }

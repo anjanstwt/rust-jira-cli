@@ -10,7 +10,7 @@ pub enum Status {
 }
 
 #[derive(Serialize, Deserialize)]
-struct Epic {
+pub struct Epic {
     pub name: String,
     pub description: String,
     pub status: Status,
@@ -29,7 +29,7 @@ impl Epic {
 }
 
 #[derive(Serialize, Deserialize)]
-struct Story {
+pub struct Story {
     pub name: String,
     pub description: String,
     pub status: Status,
