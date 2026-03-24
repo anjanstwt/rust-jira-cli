@@ -1,0 +1,9 @@
+[package]
+name = "rust_jira_cli"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.102"
+serde = { version = "1.0", features = ["derive"], default-features = false }
+serde_json = "1.0"
