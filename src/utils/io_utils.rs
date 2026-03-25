@@ -3,7 +3,7 @@ use std::io;
 pub struct IO {}
 
 impl IO {
-    pub fn input(&self, input: Option<&str>, expect: &str) -> String {
+    pub fn input(input: Option<&str>, expect: &str) -> String {
         let mut user_input = String::new();
 
         if let Some(val) = input {
