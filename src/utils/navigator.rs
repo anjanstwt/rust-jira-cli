@@ -1,5 +1,3 @@
-
-
 pub struct Navigator {
-    pages: 
+    pages: Vec<Box<dyn >>,
 }
