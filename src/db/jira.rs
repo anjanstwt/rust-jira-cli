@@ -1,3 +1,5 @@
+use std::fs;
+
 use crate::db::{DBState, Database, Epic, JSONFileDatabase, Status, Story};
 use anyhow::{Result, anyhow};
 
@@ -7,6 +9,12 @@ pub struct JiraDatabase {
 
 impl JiraDatabase {
     pub fn new(file_path: String) -> Self {
+        let file = fs::read_to_string(&file_path);
+
+        if let Ok(f) = file {
+            println!("file found: {}", f);
+        }
+
         JiraDatabase {
             database: Box::new(JSONFileDatabase { file_path }),
         }
@@ -81,7 +89,7 @@ impl JiraDatabase {
         Ok(item_id)
     }
 
-    pub fn update_story(&self, id: u32, status: Status) -> Result<()> {
+    pub fn update_story_status(&self, id: u32, status: Status) -> Result<()> {
         let mut parsed = self.database.read_file()?;
 
         parsed

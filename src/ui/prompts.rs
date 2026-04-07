@@ -4,11 +4,11 @@ use crate::{
 };
 
 pub struct Prompts {
-    create_epic: Box<dyn Fn() -> Epic>,
-    delete_epic: Box<dyn Fn() -> bool>,
-    create_story: Box<dyn Fn() -> Story>,
-    delete_story: Box<dyn Fn() -> bool>,
-    update_status: Box<dyn Fn() -> Option<Status>>,
+    pub create_epic: Box<dyn Fn() -> Epic>,
+    pub delete_epic: Box<dyn Fn() -> bool>,
+    pub create_story: Box<dyn Fn() -> Story>,
+    pub delete_story: Box<dyn Fn() -> bool>,
+    pub update_status: Box<dyn Fn() -> Option<Status>>,
 }
 
 impl Prompts {
@@ -91,7 +91,7 @@ fn update_status_prompt() -> Option<Status> {
         match status {
             1 => return Some(Status::Open),
             2 => return Some(Status::InProgress),
-            3 => return Some(Status::Resolve),
+            3 => return Some(Status::Resolved),
             4 => return Some(Status::Closed),
             _ => return None,
         }

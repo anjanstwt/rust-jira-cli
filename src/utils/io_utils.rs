@@ -14,4 +14,7 @@ impl IO {
 
         user_input
     }
+    pub fn wait_for_key_press() {
+        io::stdin().read_line(&mut String::new()).unwrap();
+    }
 }
